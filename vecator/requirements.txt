@@ -1,0 +1,4 @@
+Flask
+vtracer
+Pillow
+Werkzeug

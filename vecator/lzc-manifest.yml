@@ -1,0 +1,16 @@
+lzc-sdk-version: 0.1
+name: vecator
+package: cloud.lazycat.app.vecator
+version: 0.0.1
+description: 
+license: https://choosealicense.com/licenses/mit/
+homepage: 
+author: 
+application:
+  subdomain: vecator
+  routes:
+    - /=file:///lzcapp/pkg/content/dest/ui/templates
+    - /api/=exec://5000,./lzcapp/pkg/content/dest/backend/run.sh
+services:
+  vecator: 
+    image: vecator.tar

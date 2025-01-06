@@ -12,8 +12,8 @@
   "version": "0.0.1",
   "public_paths": [
     "/",
-    "/static/",
-    "/templates/"
+    "/templates/",
+    "/static/"
   ],
   "iconPath": "icon.png",
   "composePath": "docker-compose.yml",
@@ -32,9 +32,18 @@
       "type": "http",
       "path": "/",
       "targetPath": "/templates/"
+    },
+    "web_5000_5000": {
+      "use": true,
+      "type": "http",
+      "path": "/",
+      "targetPath": "file:///lzcapp/pkg/content/templates"
     }
   },
   "build_app": {
+    "build": true
+  },
+  "build_web": {
     "build": true
   }
 }
