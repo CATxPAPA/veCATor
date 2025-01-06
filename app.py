@@ -22,6 +22,16 @@ os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+# 清空输出文件夹
+def clear_output_folder():
+    for filename in os.listdir(OUTPUT_FOLDER):
+        file_path = os.path.join(OUTPUT_FOLDER, filename)
+        try:
+            if os.path.isfile(file_path):
+                os.unlink(file_path)
+        except Exception as e:
+            print(f'Error deleting file {file_path}: {e}')
+
 # 主页路由
 @app.route('/')
 def index():
@@ -108,4 +118,5 @@ def output_file(filename):
 
 # 运行服务器
 if __name__ == '__main__':
+    clear_output_folder()
     app.run(debug=True)
