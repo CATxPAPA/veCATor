@@ -1,4 +1,4 @@
-Flask
-vtracer
-Pillow
-Werkzeug
+Flask==2.0.3
+vtracer==0.6.11
+Pillow==8.4.0
+Werkzeug==2.0.3
