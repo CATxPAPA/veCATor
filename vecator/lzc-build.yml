@@ -9,7 +9,7 @@ buildscript: sh build.sh
 manifest: ./lzc-manifest.yml
 
 # contentdir: 指定打包的内容，将会打包到 lpk 中
-contentdir: ./dist
+contentdir: ./app
 
 # pkgout: lpk 包的输出路径
 pkgout: ./
@@ -31,5 +31,3 @@ devshell:
     export npm_config_registry=https://registry.npmmirror.com
     export PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
 
-ApplicationConfig:
-  image: python:3.8-slim
