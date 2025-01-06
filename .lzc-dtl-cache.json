@@ -1,0 +1,40 @@
+{
+  "name": "veCATor",
+  "package": "vecator",
+  "description": "批量转换位图到矢量svg",
+  "homepage": "https://github.com/catxpapa/vecator",
+  "author": "CATxPAPA",
+  "app_features": [
+    "multi_instance",
+    "public_path"
+  ],
+  "subdomain": "vecator",
+  "version": "0.0.1",
+  "public_paths": [
+    "/",
+    "/static/",
+    "/templates/"
+  ],
+  "iconPath": "icon.png",
+  "composePath": "docker-compose.yml",
+  "unsupported_platforms": [
+    "ios",
+    "android",
+    "linux",
+    "windows",
+    "macos",
+    "tvos"
+  ],
+  "lastRouteType": "from_compose",
+  "port_mappings": {
+    "app_5000_5000": {
+      "use": true,
+      "type": "http",
+      "path": "/",
+      "targetPath": "/templates/"
+    }
+  },
+  "build_app": {
+    "build": true
+  }
+}
