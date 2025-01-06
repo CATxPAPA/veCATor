@@ -3,6 +3,7 @@ FROM python:3.11-alpine
 # 设置工作目录
 WORKDIR /app
 
+
 # 复制当前目录内容到工作目录
 COPY . /app
 
