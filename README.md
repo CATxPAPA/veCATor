@@ -11,6 +11,12 @@ veCATor 是一个使用 Flask 运行的极简 Web 应用，它的本质上只是
 
 ## 安装指南
 
+### Docker hub
+```docker
+docker pull catxpapa/vecator
+```
+
+### 本地运行
 请确保您的系统已安装以下软件：
 
 - **Python 版本**：3.6 及以上
@@ -54,6 +60,7 @@ pip install flask vtracer
 * 中文图片会无法获取（目前太累太兴奋，应该修改很简单）
   
 * 手机端还没有完全适配好（但能用）
+
   
 ## 懒猫微服版
 [lzc-vecator](./lzc-vecator) 是基于 [lzc-sdk](https://gitee.com/linakesi/lzc-sdk) 专用的打包文件，用于[懒猫微服](https://lazycat.cloud/)安装使用。
@@ -64,6 +71,10 @@ pip install flask vtracer
   
 * 未来需要加入微服本地存储的读取和保存
 
+## AI辅助说明
+* 本项目代码的70%左右是由ChatGPT和Google AI Studio编写的
+* Docker打包主要是在VScode环境下由Copilot协助完成
+* 我的时间主要花在页面美化、体验修改和懒猫微服的配置研究与尝试上
 
 ## 许可证
 
