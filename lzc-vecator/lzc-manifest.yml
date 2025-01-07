@@ -1,0 +1,20 @@
+lzc-sdk-version: "0.1"
+package: cloud.lazycat.app.vecator
+version: 0.0.1
+name: veCATor
+description: 批量转换图片至矢量svg
+homepage: https://github.com/catxpapa/vecator
+author: CATxPAPA@gmail.com
+application:
+  routes:
+    - /=http://vecator.cloud.lazycat.app.vecator.lzcapp:5000
+  depends_on:
+    - vecator
+  subdomain: vecator
+  image: catxpapa/vecator:latest
+services:
+  vecator:
+    image: catxpapa/vecator:latest
+    binds:
+      - /lzcapp/var/uploads:/vecator/uploads
+      - /lzcapp/var/outputs:/vecator/outputs
