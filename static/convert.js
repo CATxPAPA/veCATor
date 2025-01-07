@@ -9,7 +9,7 @@
       });
   });
          // 上传并转换文件
-      async function uploadAndConvert(file, resultContainer, downloadButton, textarea) {
+      async function uploadAndConvert(file, resultContainer, downloadButton,copyButton, textarea) {
             const formData = new FormData(window.vtracerForm);
             formData.append('files[]', file);
 
@@ -31,6 +31,7 @@
                              downloadButton.href = results[0].preview_url;
                             downloadButton.download = results[0].filename;
                             downloadButton.style.display = 'inline-block';
+                            copyButton.style.display = 'inline-block';
 
                         } catch(e){
                              console.error("Error fetching SVG:", e);

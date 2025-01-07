@@ -31,11 +31,33 @@ function handleFiles(files) {
         downloadButton.style.display = 'none';
 
         const copyButton = document.createElement('button');
+        copyButton.classList.add('copy-button');
         copyButton.textContent = '拷贝';
+        copyButton.style.display = 'none';
         copyButton.onclick = () => {
+            // 恢复其他所有拷贝按钮的原始状态
+            document.querySelectorAll('.copy-button').forEach(btn => {
+                btn.style.backgroundColor = '';
+                btn.textContent = '拷贝';
+            });
+
             navigator.clipboard.writeText(textarea.value)
-                .then(() => alert("SVG 代码已复制到剪贴板"))
-                .catch(err => alert("拷贝失败"));
+                .then(() => {
+                    copyButton.style.backgroundColor = '#00aabb';
+                    copyButton.textContent = '已拷贝';
+                    setTimeout(() => {
+                        copyButton.style.backgroundColor = '';
+                        copyButton.textContent = '拷贝';
+                    }, 3000);
+                })
+                .catch(err => {
+                    copyButton.style.backgroundColor = '#ee6688';
+                    copyButton.textContent = '拷贝失败';
+                    setTimeout(() => {
+                        copyButton.style.backgroundColor = '';
+                        copyButton.textContent = '拷贝';
+                    }, 3000);
+                });
         };
         const buttonContainer = document.createElement('div');
         buttonContainer.classList.add('button-container');
@@ -55,7 +77,7 @@ function handleFiles(files) {
         };
         reader.readAsDataURL(file);
 
-        uploadAndConvert(file, resultContainer, downloadButton, textarea);
+        uploadAndConvert(file, resultContainer, downloadButton,copyButton, textarea);
     });
 }
 // 拖拽和粘贴事件
