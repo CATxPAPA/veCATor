@@ -22,4 +22,4 @@ LOG_FILE=/home/bitnami/www/vecator/vecator/log/gunicorn.log
 cd $PROJECT_DIR
 
 # 启动 Gunicorn
-gunicorn --bind $BIND_ADDRESS --workers $WORKERS --log-file $LOG_FILE $FLASK_APP
+/home/bitnami/.local/bin/gunicorn --bind $BIND_ADDRESS --workers $WORKERS --log-file $LOG_FILE $FLASK_APP
