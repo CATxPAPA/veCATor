@@ -2,6 +2,11 @@ body {
     font-family: Arial, sans-serif;
     padding: 20px;
     background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
 }
 
 .upload-area {
@@ -11,6 +16,10 @@ body {
     padding: 20px;
     margin-bottom: 20px;
     position: relative;
+}
+
+.upload-area h2,p {
+    pointer-events: none;
 }
 
 .upload-area input[type="file"] {
@@ -24,6 +33,10 @@ body {
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.upload-area.focused {
+    border-color: #4B0474;
 }
 
 .upload-area.dragover {
@@ -77,18 +90,25 @@ ul {
 
 .action-buttons {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     gap: 10px;
+    width: 100%;
+    min-width: 400px;
     margin-bottom: 10px;
     padding-top:10px;
     border-top:1px solid #ccc; /* 添加分隔线 */
 }
 
-#description{
-    color:#666;
-    flex-basis: 100%;
-    margin:0;
+.action-buttons #description{
+  color:#666;
+  min-width: 400px;
+  flex-basis: 100%;
+  margin:0;
 }
 .action-buttons button {
+    min-width: 150px;
+    min-height: 40px;
     white-space: nowrap;
     background-color: #4B0474;
     color: #fff;
