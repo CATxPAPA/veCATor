@@ -1,6 +1,6 @@
 # veCATor
 
-veCATor 是一个基于 Flask 的极简 Web 应用，集成了 [vtracer](https://github.com/visioncortex/vtracer) 的 Python 扩展功能，提供批量将光栅图像（如 JPG、PNG）转换为矢量图形（SVG）的服务。用户可以通过前端页面上传图片，设置转换参数，并批量下载转换后的矢量图。
+veCATor 是一个使用 Flask 运行的极简 Web 应用，它的本质上只是一个网页UI，在后端集成了 [vtracer](https://github.com/visioncortex/vtracer) 的 Python 扩展功能，提供批量将光栅图像（如 JPG、PNG）转换为矢量图形（SVG）的服务。用户可以通过前端页面上传图片，设置转换参数，并批量下载转换后的矢量图。
 
 ## 功能特性
 
@@ -50,11 +50,20 @@ pip install flask vtracer
 
 * 你也可以复制SVG代码用于一些直接需要代码的情况
 
+## 已知问题
+* 中文图片会无法获取
+  
+* 手机端还没有完全适配好（但能用）
+  
 ## 懒猫微服版
 [lzc-vecator](./lzc-vecator) 是基于 [lzc-sdk](https://gitee.com/linakesi/lzc-sdk) 专用的打包文件，用于[懒猫微服](https://lazycat.cloud/)安装使用。
+
 目前问题：
+
 * 无法批量下载图片（可能是容器限制？）
+  
 * 未来需要加入微服本地存储的读取和保存
+
 
 ## 许可证
 
