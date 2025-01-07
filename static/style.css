@@ -8,169 +8,7 @@ body {
     justify-content: flex-start;
     height: 100vh;
 }
-
-.upload-area {
-    border: 2px dashed #ccc;
-    border-radius: 10px;
-    text-align: center;
-    padding: 20px;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.upload-area h2,p {
-    pointer-events: none;
-}
-
-.upload-area input[type="file"] {
-    display: none;
-}
-
-.upload-area label {
-    display: inline-block;
-    padding: 10px 20px;
-     background-color: #4B0474;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.upload-area.focused {
-    border-color: #4B0474;
-}
-
-.upload-area.dragover {
-    border-color: #4B0474;
-    background-color: #f0f8ff;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-.preview-item {
-    display: flex;
-    align-items: stretch;
-    margin-bottom: 15px;
-    gap: 10px;
-}
-
-.image-container, .result-container {
-    width: 200px;
-    height: 200px;
-    border: 1px solid #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-     background-color: #fff;
-    overflow: hidden;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-}
-
-.result-container .status {
-    color: #888;
-}
-
-.code-container {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.code-container textarea {
-    flex-grow: 1;
-    height: 200px;
-    resize: none;
-    font-size: 12px;
-    border:1px solid #ccc;
-}
-
-.action-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 10px;
-    width: 100%;
-    min-width: 400px;
-    margin-bottom: 10px;
-    padding-top:10px;
-    border-top:1px solid #ccc; /* 添加分隔线 */
-}
-
-.action-buttons #description{
-  color:#666;
-  min-width: 400px;
-  flex-basis: 100%;
-  margin:0;
-}
-.action-buttons button {
-    min-width: 150px;
-    min-height: 40px;
-    white-space: nowrap;
-    background-color: #4B0474;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.action-buttons button:hover {
-    background-color: #0056b3;
-}
-.button-container {
-    display: flex;
-    flex-direction: column;
-    margin-left: 0;
-    margin-bottom: auto;
-}
-
-.button-container button,
-.button-container a {
-    margin-bottom: 5px;
-    background-color: #4B0474;
-    color: #fff;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-    border: none;
-    text-decoration: none;
-}
-  .vtracer-params {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-
-    margin-bottom: 20px;
-    align-items: center;
-}
-
-.vtracer-params label {
-    white-space: nowrap;
-    margin-bottom: 0;
-    font-size: 12px;
-    color:#666;
-}
-.vtracer-params .form-group{
-    margin-bottom: 5px;
-    padding:5px;
-    display: flex;
-    flex-direction: column;
-}
-.vtracer-params .form-group span{
-    font-size: 9px;
-}
-.vtracer-params input,
-.vtracer-params select {
-     padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-      width: 80px;
-}
-/* header styles */
+/* header  */
 header {
   display: flex!important;
   width: 100%;
@@ -199,76 +37,272 @@ header nav ul li a {
   color: #333;
 }
 .break {
-  flex-basis: 100%; /* 占据整行宽度 */
-  height: 0; /* 不显示内容 */
+  flex-basis: 100%; 
+  height: 0; 
 }
-/*radio button*/
-.radio-group {
-  display: inline-flex;
+
+/* upload-area */
+.upload-area {
+    border: 2px dashed #ccc;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.upload-area h2,p {
+    pointer-events: none;
+    
+}
+
+.upload-area h2{
+  font-weight: normal!important;
+  padding: .5em 0 0!important;
+  display: block!important;
+}
+.upload-area input[type="file"] {
+    display: none;
+}
+
+.upload-area label {
+    display: inline-block;
+    padding: 10px 20px;
+     background-color: #4B0474;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-area.focused {
+    border-color: #4B0474;
+}
+
+.upload-area.dragover {
+    border-color: #4B0474;
+    background-color: #f0f8ff;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+
+/*template button*/
+.vtracer-params button.template-button {
+  background-color: #fff;
+ color: #4B0474;
+ border: 1px solid #4B0474;
+ padding: 10px;
+ border-radius: 4px;
+ cursor: pointer;
+    margin-right: 10px;
+
+}
+#advanced-params{
+  display: flex;
+  flex-wrap: wrap;
+  gap:10px;
+  padding: 10px;
+  background: #fcfcfc;
+  border-radius: 10px;
+  width:100%;
+  border:1px solid #ccc;
+}
+
+/* params */
+.vtracer-params button.template-button.active{
+background-color: #4B0474;
+color: #fff;
+}
+.vtracer-params #toggle-advanced{
+ background-color: #fff;
+ color: #4B0474;
+ border: 1px solid #4B0474;
+ padding: 10px;
+ border-radius: 4px;
+ cursor: pointer;
+
+}
+
+
+.vtracer-params {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.vtracer-params label {
+  white-space: nowrap;
+  margin-bottom: 0;
+  font-size: 12px;
+  color:#666;
+}
+.vtracer-params .form-group{
+  margin-bottom: 5px;
+  padding:5px;
+  display: flex;
+  flex-direction: column;
+}
+.vtracer-params .form-group span{
+  font-size: 9px;
+}
+.vtracer-params input,
+.vtracer-params select {
+   padding: 5px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  overflow: hidden;
+    width: 80px;
+}
+
+/*radio button*/
+.radio-group {
+display: inline-flex;
+border: 1px solid #ddd;
+border-radius: 4px;
+overflow: hidden;
 }
 
 .radio-group input[type="radio"] {
-  display: none;
+display: none;
 }
 
 .radio-group label {
-  padding: 5px 10px;
-  cursor: pointer;
-   background-color: #eee;
-    margin:0;
-    border-right: 1px solid #ddd;
-     white-space: nowrap;
+padding: 5px 10px;
+cursor: pointer;
+ background-color: #eee;
+  margin:0;
+  border-right: 1px solid #ddd;
+   white-space: nowrap;
 
 }
 
 .radio-group label:last-child {
-      border-right:none;
+    border-right:none;
 }
 
 
 .radio-group input[type="radio"]:checked + label {
+background-color: #4B0474;
+color: #fff;
+}
+
+
+/* action-buttons */
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  padding-top:10px;
+  border-top:1px solid #ccc; /* 添加分隔线 */
+}
+
+.action-buttons #description{
+color:#666;
+flex-basis:60%;
+white-space: nowrap;
+margin:0;
+}
+
+.action-buttons button-group {
+  display: flex;
+  flex-basis:40%;
+  gap: 10px;
+}
+.action-buttons button {
+  min-width: 150px;
+  min-height: 40px;
+  white-space: nowrap;
   background-color: #4B0474;
   color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
-/*template button*/
-.vtracer-params button.template-button {
-    background-color: #fff;
-   color: #4B0474;
-   border: 1px solid #4B0474;
-   padding: 10px;
-   border-radius: 4px;
-   cursor: pointer;
-      margin-right: 10px;
 
+.action-buttons button:hover {
+  background-color: #0056b3;
 }
-#advanced-params{
+
+
+/* preview */
+#preview-list {
+  width: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap:10px;
-    padding: 10px;
-    background: #fcfcfc;
-    border-radius: 10px;
-    width:100%;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.preview-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.image-container, .result-container {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     background-color: #fff;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.image-container{
+  display: none;
+}
+.result-container .status {
+    color: #888;
+}
+
+.code-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    display: none;
+}
+
+.code-container textarea {
+    flex-grow: 1;
+    height: 200px;
+    resize: none;
+    font-size: 12px;
     border:1px solid #ccc;
 }
-h2{
-    font-weight: normal!important;
-    padding: .5em 0 0!important;
-    display: block!important;
-}
-.vtracer-params button.template-button.active{
-  background-color: #4B0474;
-  color: #fff;
-  }
-  .vtracer-params #toggle-advanced{
-   background-color: #fff;
-   color: #4B0474;
-   border: 1px solid #4B0474;
-   padding: 10px;
-   border-radius: 4px;
-   cursor: pointer;
 
-  }
+.button-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 0;
+    margin-bottom: auto;
+    gap: 5px;
+}
+
+.button-container button,
+.button-container a {
+    margin-bottom: 5px;
+    background-color: #4B0474;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+}
+
