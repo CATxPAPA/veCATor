@@ -9,7 +9,7 @@ const downloadAllButton = document.getElementById('download-all');
       });
   });
          // 上传并转换文件
-      async function uploadAndConvert(file, resultContainer, downloadButton, copyButton, redrawButton, textarea) {
+      async function uploadAndConvert(file,imgContainer, resultContainer, downloadButton, copyButton, redrawButton, textarea) {
             const formData = new FormData(window.vtracerForm);
 
             // 对文件名进行编码
@@ -27,6 +27,7 @@ const downloadAllButton = document.getElementById('download-all');
                  if (response.ok) {
                     const results = await response.json();
                      if(results && results.length > 0 && results[0].preview_url){
+                        imgContainer.style.display = 'none';
                         try{
                            resultContainer.innerHTML = ""; //清空初始化的文字
                              const svgResponse = await fetch(results[0].preview_url);

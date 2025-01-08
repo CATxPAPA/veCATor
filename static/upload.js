@@ -108,7 +108,7 @@ function handleFiles(files) {
         };
         reader.readAsDataURL(file);
 
-        uploadAndConvert(file, resultContainer, downloadButton,copyButton,redrawButton, textarea);
+        uploadAndConvert(file,imgContainer, resultContainer, downloadButton,copyButton,redrawButton, textarea);
     });
 }
 // 拖拽和粘贴事件

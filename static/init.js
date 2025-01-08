@@ -159,4 +159,14 @@ $(function() {
              advancedParams.toggle();
              $(e.currentTarget).toggleClass('actived');
          });
+
+         const helpButton = $('#help-button');
+         helpButton.on('click', function() {
+            const helpContent = $('#help');
+            helpContent.toggleClass('open');
+        });
+        $('#help').on('click', function(e) {
+            $('#help').removeClass('open');
+        });
+        
  });
