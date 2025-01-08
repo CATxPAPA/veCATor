@@ -4,7 +4,7 @@ const previewList = document.getElementById('preview-list');
 window.vtracerForm = document.getElementById('vtracer-form'); // 将 vtracerForm 提升为全局变量
 // 处理文件的核心函数
 function handleFiles(files) {
-    console.log("handleFiles called", files); // 添加这行进行调试
+    // console.log("handleFiles called", files); // 添加这行进行调试
     const fileArray = Array.from(files);
     fileInput.value = ''; // 清空 fileInput 的值
     fileArray.forEach(file => {
@@ -35,6 +35,24 @@ function handleFiles(files) {
         redrawButton.classList.add('redraw-button');
         redrawButton.textContent = '重绘';
         redrawButton.style.display = 'none';
+        redrawButton.onclick = () => {
+            const backgroundImage = imgContainer.style.backgroundImage;
+            const base64Data = backgroundImage.slice(5, -2); // 去掉 url(' 和 ') 部分
+            console.log('Base64 Data:', base64Data); // 添加调试信息
+
+            // 将 base64 数据转换为 Blob 对象
+            const byteCharacters = atob(base64Data.split(',')[1]);
+            const byteNumbers = new Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) {
+                byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+            const byteArray = new Uint8Array(byteNumbers);
+            const blob = new Blob([byteArray], { type: 'image/png' });
+
+            const file = new File([blob], 'redraw.png', { type: 'image/png' });
+            console.log('Redraw File:', file); // 添加调试信息
+            handleFiles([file]);
+        };
 
 
         const copyButton = document.createElement('button');
@@ -66,6 +84,11 @@ function handleFiles(files) {
                     }, 3000);
                 });
         };
+
+
+
+
+
         const buttonContainer = document.createElement('div');
         buttonContainer.classList.add('button-container');
         buttonContainer.appendChild(copyButton);
@@ -104,15 +127,6 @@ uploadArea.addEventListener('drop', (e) => {
     handleFiles(e.dataTransfer.files);
 });
 
-//focus效果
-document.addEventListener('click', (e) => {
-    //e.preventDefault();
-    if (e.target !== uploadArea) {
-        uploadArea.classList.remove('focused');
-    } else {
-        uploadArea.classList.add('focused');
-    }
-});
 
 // 粘贴事件
 
@@ -126,6 +140,18 @@ uploadArea.addEventListener('paste', (e) => {
     }
     if (files.length > 0) {
         handleFiles(files);
+    }
+});
+
+
+
+//focus效果
+document.addEventListener('click', (e) => {
+    //e.preventDefault();
+    if (e.target !== uploadArea) {
+        uploadArea.classList.remove('focused');
+    } else {
+        uploadArea.classList.add('focused');
     }
 });
 

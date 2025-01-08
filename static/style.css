@@ -315,6 +315,7 @@ margin:0;
 
 .button-container button,
 .button-container a {
+  font-size: 12px;
     margin-bottom: 5px;
     background-color: #4B0474;
     color: #fff;
