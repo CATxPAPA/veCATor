@@ -1,7 +1,8 @@
 version: "3.8"
 services:
-  web:
+  vecator:
     build: .
+    image: catxpapa/vecator:latest
     ports:
       - "5000:5000"
     volumes:
