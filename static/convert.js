@@ -1,4 +1,4 @@
- const downloadAllButton = document.getElementById('download-all');
+const downloadAllButton = document.getElementById('download-all');
         const clearListButton = document.getElementById('clear-list');
  $(function() {
       $(".knob").knob({
@@ -9,9 +9,14 @@
       });
   });
          // 上传并转换文件
-      async function uploadAndConvert(file, resultContainer, downloadButton,copyButton,redrawButton, textarea) {
+      async function uploadAndConvert(file, resultContainer, downloadButton, copyButton, redrawButton, textarea) {
             const formData = new FormData(window.vtracerForm);
-            formData.append('files[]', file);
+
+            // 对文件名进行编码
+            const encodedFileName = encodeURIComponent(file.name);
+            const renamedFile = new File([file], encodedFileName, { type: file.type });
+
+            formData.append('files[]', renamedFile);
 
             try {
                 const response = await fetch('/convert', {
