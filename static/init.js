@@ -1,4 +1,4 @@
- $(function() {
+$(function() {
       $(".knob").knob({
         'change': function (v) {
            const inputName = this.$.data('input');
@@ -66,6 +66,7 @@
         handleColormodeChange();
 
            templateButtons.on('click', function () {
+            toggleAdvancedButton.removeClass('actived');
                templateButtons.removeClass('active');
                 $(this).addClass('active');
                 advancedParams.hide(); //切换模板时隐藏
@@ -108,7 +109,7 @@
                             colormode: 'binary',
                              hierarchical: 'cutout',
                             mode: 'polygon',
-                             filter_speckle: 80,
+                             filter_speckle: 0,
                             color_precision: 1,
                            layer_difference: 1,
                             corner_threshold: 30,
@@ -134,10 +135,28 @@
                         };
                     }
 
+                    else if (template === 'template4') {
+                        templateData = {
+                            colormode: 'color',
+                            hierarchical: 'stacked',
+                            mode: 'spline',
+                           filter_speckle: 40,
+                            color_precision: 7,
+                           layer_difference: 50,
+                            corner_threshold: 55,
+                           length_threshold: 7,
+                           max_iterations: 20,
+                           splice_threshold: 150,
+                           path_precision: 1
+                        };
+                    }
+
                  updateForm(templateData);
                  handleColormodeChange();
         });
-          toggleAdvancedButton.on('click', function() {
+          toggleAdvancedButton.on('click', function(e) {
+            templateButtons.removeClass('active');
              advancedParams.toggle();
+             $(e.currentTarget).toggleClass('actived');
          });
  });

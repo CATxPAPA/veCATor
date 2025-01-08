@@ -30,15 +30,22 @@ function handleFiles(files) {
         downloadButton.textContent = '下载';
         downloadButton.style.display = 'none';
 
+
+        const redrawButton = document.createElement('a');
+        redrawButton.classList.add('redraw-button');
+        redrawButton.textContent = '重绘';
+        redrawButton.style.display = 'none';
+
+
         const copyButton = document.createElement('button');
         copyButton.classList.add('copy-button');
-        copyButton.textContent = '拷贝';
+        copyButton.textContent = '拷贝代码';
         copyButton.style.display = 'none';
         copyButton.onclick = () => {
             // 恢复其他所有拷贝按钮的原始状态
             document.querySelectorAll('.copy-button').forEach(btn => {
                 btn.style.backgroundColor = '';
-                btn.textContent = '拷贝';
+                btn.textContent = '拷贝代码';
             });
 
             navigator.clipboard.writeText(textarea.value)
@@ -47,7 +54,7 @@ function handleFiles(files) {
                     copyButton.textContent = '已拷贝';
                     setTimeout(() => {
                         copyButton.style.backgroundColor = '';
-                        copyButton.textContent = '拷贝';
+                        copyButton.textContent = '拷贝代码';
                     }, 3000);
                 })
                 .catch(err => {
@@ -55,7 +62,7 @@ function handleFiles(files) {
                     copyButton.textContent = '拷贝失败';
                     setTimeout(() => {
                         copyButton.style.backgroundColor = '';
-                        copyButton.textContent = '拷贝';
+                        copyButton.textContent = '拷贝代码';
                     }, 3000);
                 });
         };
@@ -63,6 +70,7 @@ function handleFiles(files) {
         buttonContainer.classList.add('button-container');
         buttonContainer.appendChild(copyButton);
         buttonContainer.appendChild(downloadButton);
+        buttonContainer.appendChild(redrawButton);
 
         codeContainer.appendChild(textarea);
 
@@ -77,7 +85,7 @@ function handleFiles(files) {
         };
         reader.readAsDataURL(file);
 
-        uploadAndConvert(file, resultContainer, downloadButton,copyButton, textarea);
+        uploadAndConvert(file, resultContainer, downloadButton,copyButton,redrawButton, textarea);
     });
 }
 // 拖拽和粘贴事件

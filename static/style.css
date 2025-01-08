@@ -73,6 +73,11 @@ header nav ul li a {
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
+    &:visited,&:hover,&:active {
+        background-color: #620698;
+        color: #fff;
+        text-decoration: none;
+    }
 }
 
 .upload-area.focused {
@@ -100,6 +105,11 @@ ul {
  cursor: pointer;
     margin-right: 10px;
 
+    &:visited,&:hover,&:active {
+      background-color: #620698;
+      color: #fff;
+      text-decoration: none;
+  }
 }
 #advanced-params{
   display: flex;
@@ -125,6 +135,15 @@ color: #fff;
  border-radius: 4px;
  cursor: pointer;
 
+ &:visited,&:hover,&:active {
+  background-color: #620698;
+  color: #fff;
+  text-decoration: none;
+}
+&.actived{
+  background-color: #4B0474;
+  color: #fff;
+}
 }
 
 
@@ -230,7 +249,7 @@ margin:0;
 }
 
 .action-buttons button:hover {
-  background-color: #0056b3;
+  background-color: #620698;
 }
 
 
@@ -304,5 +323,10 @@ margin:0;
     cursor: pointer;
     border: none;
     text-decoration: none;
+    &:visited,&:hover,&:active {
+        background-color: #620698;
+        color: #fff;
+        text-decoration: none;
+    }
 }
 
