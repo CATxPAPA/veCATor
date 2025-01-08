@@ -9,3 +9,5 @@ services:
       - ./uploads:/app/uploads
       - ./outputs:/app/outputs
     restart: always
+
+# docker compose build vecator
