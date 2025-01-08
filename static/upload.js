@@ -2,9 +2,9 @@ const uploadArea = document.getElementById('upload-area');
 const fileInput = document.getElementById('file-input');
 const previewList = document.getElementById('preview-list');
 window.vtracerForm = document.getElementById('vtracer-form'); // 将 vtracerForm 提升为全局变量
+
 // 处理文件的核心函数
 function handleFiles(files) {
-    // console.log("handleFiles called", files); // 添加这行进行调试
     const fileArray = Array.from(files);
     fileInput.value = ''; // 清空 fileInput 的值
     fileArray.forEach(file => {
@@ -30,7 +30,6 @@ function handleFiles(files) {
         downloadButton.textContent = '下载';
         downloadButton.style.display = 'none';
 
-
         const redrawButton = document.createElement('a');
         redrawButton.classList.add('redraw-button');
         redrawButton.textContent = '重绘';
@@ -40,6 +39,10 @@ function handleFiles(files) {
             const base64Data = backgroundImage.slice(5, -2); // 去掉 url(' 和 ') 部分
             console.log('Base64 Data:', base64Data); // 添加调试信息
 
+            // 检查 MIME 类型
+            const mimeType = base64Data.startsWith('data:image/jpeg') ? 'image/jpeg' : 'image/png';
+            console.log('MIME Type:', mimeType); // 添加调试信息
+
             // 将 base64 数据转换为 Blob 对象
             const byteCharacters = atob(base64Data.split(',')[1]);
             const byteNumbers = new Array(byteCharacters.length);
@@ -47,13 +50,12 @@ function handleFiles(files) {
                 byteNumbers[i] = byteCharacters.charCodeAt(i);
             }
             const byteArray = new Uint8Array(byteNumbers);
-            const blob = new Blob([byteArray], { type: 'image/png' });
+            const blob = new Blob([byteArray], { type: mimeType });
 
-            const file = new File([blob], 'redraw.png', { type: 'image/png' });
+            const file = new File([blob], 'redraw.' + (mimeType === 'image/jpeg' ? 'jpg' : 'png'), { type: mimeType });
             console.log('Redraw File:', file); // 添加调试信息
             handleFiles([file]);
         };
-
 
         const copyButton = document.createElement('button');
         copyButton.classList.add('copy-button');
@@ -85,10 +87,6 @@ function handleFiles(files) {
                 });
         };
 
-
-
-
-
         const buttonContainer = document.createElement('div');
         buttonContainer.classList.add('button-container');
         buttonContainer.appendChild(copyButton);
@@ -108,9 +106,18 @@ function handleFiles(files) {
         };
         reader.readAsDataURL(file);
 
-        uploadAndConvert(file,imgContainer, resultContainer, downloadButton,copyButton,redrawButton, textarea);
+        // 将文件转换为 Blob 对象
+        const readerForBlob = new FileReader();
+        readerForBlob.onloadend = () => {
+            const arrayBuffer = readerForBlob.result;
+            const blob = new Blob([arrayBuffer], { type: file.type });
+            const newFile = new File([blob], file.name, { type: file.type });
+            uploadAndConvert(newFile, imgContainer, resultContainer, downloadButton, copyButton, redrawButton, textarea);
+        };
+        readerForBlob.readAsArrayBuffer(file);
     });
 }
+
 // 拖拽和粘贴事件
 uploadArea.addEventListener('dragover', (e) => {
     e.preventDefault();
@@ -127,9 +134,7 @@ uploadArea.addEventListener('drop', (e) => {
     handleFiles(e.dataTransfer.files);
 });
 
-
 // 粘贴事件
-
 uploadArea.addEventListener('paste', (e) => {
     const items = e.clipboardData.items;
     const files = [];
@@ -143,11 +148,8 @@ uploadArea.addEventListener('paste', (e) => {
     }
 });
 
-
-
-//focus效果
+// focus效果
 document.addEventListener('click', (e) => {
-    //e.preventDefault();
     if (e.target !== uploadArea) {
         uploadArea.classList.remove('focused');
     } else {
