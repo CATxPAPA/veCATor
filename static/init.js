@@ -164,9 +164,26 @@ $(function() {
          helpButton.on('click', function() {
             const helpContent = $('#help');
             helpContent.toggleClass('open');
+        const overlay = $('<div id="overlay"></div>');
+        overlay.css({
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(255, 255, 255, 0.7)',
+            backdropFilter: 'blur(5px)',
+            zIndex: 8
+        });
+        $('body').append(overlay);
+        overlay.on('click', function() {
+            $('#help').removeClass('open');
+            overlay.remove();
+        });
         });
         $('#help').on('click', function(e) {
             $('#help').removeClass('open');
+            overlay.remove();
         });
         
  });
