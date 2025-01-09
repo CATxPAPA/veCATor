@@ -12,9 +12,9 @@ application:
     - vecator
   subdomain: vecator
   image: catxpapa/vecator:latest
-services:
-  vecator:
-    image: catxpapa/vecator:latest
-    binds:
-      - /lzcapp/var/uploads:/vecator/uploads
-      - /lzcapp/var/outputs:/vecator/outputs
+  binds:
+    - /lzcapp/var/uploads:/vecator/uploads
+    - /lzcapp/var/outputs:/vecator/outputs
+# services:
+#   vecator:
+#     image: catxpapa/vecator:latest
