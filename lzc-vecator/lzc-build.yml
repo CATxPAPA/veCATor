@@ -1,0 +1,5 @@
+manifest: ./lzc-manifest.yml
+pkgout: ./
+contentdir: ./
+icon: ./icon.png
+#nothing more to do
