@@ -1,5 +1,5 @@
 manifest: ./lzc-manifest.yml
 pkgout: ./
 contentdir: ./
-icon: ./icon.png
+icon: ./appicon.png
 #nothing more to do
