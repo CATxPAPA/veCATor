@@ -12,7 +12,7 @@ application:
   depends_on:
     - vecator
   subdomain: vecator
-  image: catxpapa/vecator:latest
+  image: registry.lazycat.cloud/tresmort/catxpapa/vecator:52e40f35a1339acc
   binds:
     - /lzcapp/var/uploads:/vecator/uploads
     - /lzcapp/var/outputs:/vecator/outputs
