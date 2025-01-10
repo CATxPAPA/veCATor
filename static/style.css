@@ -39,6 +39,7 @@ header nav ul li a {
   text-decoration: none;
   border-radius: 5px;
   padding: 5px 10px;
+  white-space: nowrap;
   &:hover {
     color: #fff;
     background-color: #4B0474;
@@ -145,30 +146,35 @@ ul {
 
 
 /*template button*/
-.vtracer-params button.template-button {
+.vtracer-params button.template-button, .vtracer-params #toggle-advanced {
   background-color: #fff;
  color: #4B0474;
  border: 1px solid #4B0474;
- padding: 10px;
+ padding: 5px 10px;
  border-radius: 4px;
  cursor: pointer;
-    margin-right: 10px;
-
+    margin:5px;
+    font-size: 14px;
+white-space: nowrap;
     &:visited,&:hover,&:active {
       background-color: #620698;
       color: #fff;
       text-decoration: none;
+
+line-height: 1em;
   }
 }
 #advanced-params{
   display: flex;
   flex-wrap: wrap;
   gap:10px;
-  padding: 10px;
+  padding: 5px 10px;
   background: #fcfcfc;
   border-radius: 10px;
   width:100%;
   border:1px solid #ccc;
+ 
+line-height: 1em;
 }
 
 /* params */
@@ -176,14 +182,17 @@ ul {
 background-color: #4B0474;
 color: #fff;
 }
-.vtracer-params #toggle-advanced{
+.vtracer-params #toggle-advancxed{
  background-color: #fff;
  color: #4B0474;
  border: 1px solid #4B0474;
- padding: 10px;
+ padding: 5px 10px;
  border-radius: 4px;
  cursor: pointer;
+ font-size: 14px;
+ line-height: 1em;
 
+ white-space: nowrap;
  &:visited,&:hover,&:active {
   background-color: #620698;
   color: #fff;
@@ -216,6 +225,7 @@ color: #fff;
   padding:5px;
   display: flex;
   flex-direction: column;
+  height:auto;
 }
 .vtracer-params .form-group span{
   font-size: 9px;

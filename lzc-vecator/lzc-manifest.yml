@@ -1,8 +1,9 @@
 lzc-sdk-version: "0.1"
 package: cloud.lazycat.app.vecator
-version: 0.0.1
+version: 0.0.3
 name: veCATor
 description: 批量转换图片至矢量svg
+license: https://choosealicense.com/licenses/mit/
 homepage: https://github.com/catxpapa/vecator
 author: CATxPAPA@gmail.com
 application:
