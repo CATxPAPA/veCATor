@@ -8,12 +8,11 @@ homepage: https://github.com/catxpapa/vecator
 author: CATxPAPA@gmail.com
 application:
   routes:
-    - /=http://app.cloud.lazycat.app.vecator.lzcapp:5000
+    - /=http://vecator.cloud.lazycat.app.vecator.lzcapp:5000
   subdomain: vecator
-  image: registry.lazycat.cloud/tresmort/catxpapa/vecator:52e40f35a1339acc
-  # binds:
-  #   - /lzcapp/var/uploads:/vecator/uploads
-  #   - /lzcapp/var/outputs:/vecator/outputs
-# services:
-#   vecator:
-#     image: catxpapa/vecator:latest
+services:
+  vecator:
+    image: registry.lazycat.cloud/tresmort/catxpapa/vecator:52e40f35a1339acc
+    binds:
+      - /lzcapp/var/uploads:/vecator/uploads
+      - /lzcapp/var/outputs:/vecator/outputs
