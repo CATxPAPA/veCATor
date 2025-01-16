@@ -18,6 +18,15 @@ function handleFiles(files) {
         const resultContainer = document.createElement('div');
         resultContainer.classList.add('result-container');
         resultContainer.innerHTML = '<p class="status">转换中...</p>';
+        
+        resultContainer.addEventListener('click', (e) => {
+            //打开.big-preview
+            let backgroundImage = e.target.style.backgroundImage;
+            const bigPreview = document.getElementById('big-preview');
+            bigPreview.classList.add('open');
+            bigPreview.style.backgroundImage = backgroundImage;
+        });
+        
 
         const codeContainer = document.createElement('div');
         codeContainer.classList.add('code-container');
@@ -160,4 +169,12 @@ document.addEventListener('click', (e) => {
 // 选择文件事件
 fileInput.addEventListener('change', (e) => {
     handleFiles(e.target.files);
+});
+
+
+//点击#big-preview关闭
+document.addEventListener('click', (e) => {
+    if (e.target.id === 'big-preview') {
+        e.target.classList.remove('open');
+    }
 });
