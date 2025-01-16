@@ -4,6 +4,10 @@ $(function() {
            const inputName = this.$.data('input');
              $(`#${inputName}`).val(v).trigger('change');
        },
+
+       
+      
+
       });
       const vtracerForm = $('#vtracer-form');
     const templateButtons = $('.template-button');

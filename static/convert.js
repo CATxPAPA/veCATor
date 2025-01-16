@@ -7,6 +7,8 @@ const downloadAllButton = document.getElementById('download-all');
              $(`#${inputName}`).val(v).trigger('change');
        },
       });
+      
+     
   });
          // 上传并转换文件
       async function uploadAndConvert(file,imgContainer, resultContainer, downloadButton, copyButton, redrawButton, textarea) {

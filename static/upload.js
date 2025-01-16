@@ -3,6 +3,40 @@ const fileInput = document.getElementById('file-input');
 const previewList = document.getElementById('preview-list');
 window.vtracerForm = document.getElementById('vtracer-form'); // 将 vtracerForm 提升为全局变量
 
+//将服务器端icon.jpg做为第一张测试用图上传并转换
+window.onload = async () => {
+    const firstImg = new Image(); // 使用 Image 对象加载图片
+    firstImg.src = '/static/test.jpg';
+
+    // 等待图片加载完成
+    firstImg.onload = () => {
+        // 创建一个 600x600 的 canvas
+        const canvas = document.createElement('canvas');
+        canvas.width = 600;
+        canvas.height = 600;
+        const ctx = canvas.getContext('2d');
+
+        // 将图片绘制到 canvas 上
+        ctx.drawImage(firstImg, 0, 0, 600, 600);
+
+        // 将 canvas 转换为 Base64 格式
+        const base64String = canvas.toDataURL('image/png'); // 默认是 PNG 格式
+        console.log('Base64 String:', base64String);
+
+        // 如果需要 Blob 格式，可以用 toBlob
+        canvas.toBlob((blob) => {
+            const file = new File([blob], 'icon.jpg', { type: 'image/jpeg' });
+            handleFiles([file]);
+        }, 'image/jpeg');
+    };
+
+    firstImg.onerror = () => {
+        console.error('Failed to load the image at /static/icon.jpg');
+    };
+};
+
+
+
 // 处理文件的核心函数
 function handleFiles(files) {
     const fileArray = Array.from(files);
